@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: energyplus-backend
+  name: energyplus-backend
+  namespace: energyplus
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: energyplus-backend
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: energyplus-backend
+    spec:
+      containers:
+        - env:
+            - name: NODE_ENV
+              value: production
+          image: energyplus-backend
+          imagePullPolicy: Always
+          name: energyplus-backend
+          resources:
+            limits:
+              cpu: '2'
+              memory: 1024Mi
+            requests:
+              cpu: 30m
+              memory: 256Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+            - mountPath: /energyplus-backend/.tmp
+              name: db
+            - mountPath: /energyplus-backend/public/uploads
+              name: uploads
+      imagePullSecrets:
+        - name: global-secret
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - hostPath:
+          path: /srv/energyplus/db
+          type: ""
+        name: db
+      - hostPath:
+          path: /srv/energyplus/uploads
+          type: ""
+        name: uploads

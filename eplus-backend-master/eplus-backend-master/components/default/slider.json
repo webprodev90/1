@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_default_sliders",
+  "info": {
+    "name": "slider",
+    "icon": "arrows-alt-h"
+  },
+  "options": {},
+  "attributes": {
+    "slide": {
+      "type": "component",
+      "repeatable": true,
+      "component": "default.slide"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: energyplus-backend
+  namespace: energyplus
+spec:
+  ports:
+    - port: 1337
+      protocol: TCP
+      targetPort: 1337
+      name: energyplus-backend
+  selector:
+    app: energyplus-backend
+  sessionAffinity: None
+  type: ClusterIP

@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_default_redirects",
+  "info": {
+    "name": "Redirect",
+    "icon": "undo"
+  },
+  "options": {},
+  "attributes": {
+    "from": {
+      "type": "string"
+    },
+    "to": {
+      "type": "string"
+    }
+  }
+}

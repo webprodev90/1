@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_default_seos",
+  "info": {
+    "name": "seo",
+    "icon": "anchor"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "value": {
+      "type": "string"
+    }
+  }
+}

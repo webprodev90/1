@@ -1,0 +1,27 @@
+{
+  "kind": "singleType",
+  "collectionName": "site_metas",
+  "info": {
+    "name": "SiteMeta"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "redirects": {
+      "type": "dynamiczone",
+      "components": [
+        "default.redirect"
+      ]
+    }
+  }
+}

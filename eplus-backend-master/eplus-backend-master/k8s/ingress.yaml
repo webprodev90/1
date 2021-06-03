@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: energyplus-backend
+  namespace: energyplus
+  annotations:
+    kubernetes.io/ingress.class: "traefik"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    cert-manager.io/acme-challenge-type: http01
+    ingress.kubernetes.io/ssl-redirect: "true"
+spec:
+  tls:
+    - hosts:
+        # Change this to your own hostname
+        - api.xn--c1adkmgpem4hrai.xn--p1ai
+      secretName: api-energyplus-tls
+  rules:
+    # Change this to your own hostname
+    - host: api.xn--c1adkmgpem4hrai.xn--p1ai
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: energyplus-backend
+              servicePort: 1337
+
